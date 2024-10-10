@@ -1,0 +1,123 @@
+
+Notes on Object Orientation in C++
+### Introduction to Object Orientation
+Object Orientation (OO) is a programming paradigm centered around the concept of "objects." These objects can contain data, in the form of fields (often called attributes), and code, in the form of procedures (often called methods). OO allows for modeling real-world entities and relationships, which helps in managing complexity in software design.
+
+## Key Concepts
+### 1. Object Identity
+
+Every object has a unique identity, distinct from its data or attributes.
+Example:
+```cpp
+class Car {
+public:
+    string model;
+    Car(string m) : model(m) {}
+};
+
+int main() {
+    Car car1("Toyota");
+    Car car2("Toyota");
+    cout << (&car1 == &car2); // Output: 0 (false, different identities)
+}
+```
+### 2.Encapsulation
+
+Encapsulation is the bundling of data and methods that operate on that data within a class, restricting direct access to some components.
+Example:
+```cpp
+class BankAccount {
+private:
+    double balance; // Private attribute
+
+public:
+    BankAccount() : balance(0) {}
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    double getBalance() {
+        return balance;
+    }
+};
+
+int main() {
+    BankAccount account;
+    account.deposit(100);
+    cout << account.getBalance(); // Output: 100
+}
+```
+### 3. Information Hiding
+
+Information hiding involves restricting access to certain details of an object to protect its integrity.
+Example:
+```cpp
+class User {
+private:
+    string password; // Hidden attribute
+
+public:
+    User(string p) : password(p) {}
+
+    bool checkPassword(string p) {
+        return password == p;
+    }
+};
+```
+### 4.Polymorphism
+
+Polymorphism allows methods to do different things based on the object that it is acting upon, typically achieved through method overriding.
+Example:
+```cpp
+class Animal {
+public:
+    virtual void sound() { cout << "Animal sound"; }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override { cout << "Bark"; }
+};
+
+class Cat : public Animal {
+public:
+    void sound() override { cout << "Meow"; }
+};
+
+int main() {
+    Animal* animal1 = new Dog();
+    Animal* animal2 = new Cat();
+    animal1->sound(); // Output: Bark
+    animal2->sound(); // Output: Meow
+    delete animal1;
+    delete animal2;
+}
+```
+### 5. Generosity
+
+Generosity can refer to designing interfaces that are minimal but complete, allowing multiple classes to implement the same interface for flexibility.
+## Importance of Modeling
+Modeling is essential in OO as it helps visualize and design systems before coding, aiding in understanding requirements, relationships, and workflows.
+
+## Principles of Modeling
+- `Abstraction`: Simplifying complex systems by focusing on essential characteristics.
+- `Encapsulation`: Hiding implementation details to reduce complexity.
+- `Hierarchy`: Organizing classes in a parent-child structure for reuse.
+- `Interactivity`: Defining how objects communicate and collaborate.
+## Object-Oriented Modeling
+Object-oriented modeling involves creating models that represent real-world entities and their interactions. It helps in visualizing and specifying system requirements.
+
+## Introduction to UML
+UML (Unified Modeling Language) is a standardized modeling language that provides a way to visualize the design of a system. It includes various diagrams to represent different aspects of the system, such as class diagrams, sequence diagrams, and use case diagrams.
+
+## Conceptual Model of UML
+UML provides several diagram types:
+
+- `Class Diagrams`: Show classes, attributes, methods, and relationships.
+- `Sequence Diagrams`: Describe how objects interact in a sequence.
+- `Use Case Diagrams`: Capture functional requirements through user interactions.
+## Architecture
+The architecture of an object-oriented system defines the structure and organization of its components. It involves defining modules, their interactions, and ensuring scalability and maintainability.
+
+By applying these concepts, developers can create robust, modular, and maintainable software systems that accurately represent real-world processes and relationships.
