@@ -2,23 +2,23 @@ Creating a comprehensive tutorial page for C++ with Object-Oriented Programming 
 
 # C++ Object-Oriented Programming (OOP) Tutorial
 ## Table of Contents
-Introduction to OOP
-Classes and Objects
-Encapsulation
-Inheritance
-Polymorphism
-Abstraction
+- 1. Introduction to OOP
+- 2. Classes and Objects
+- 3. Encapsulation
+- 4. Inheritance
+- 5. Polymorphism
+- 6. Abstraction
 Example Project
 ### 1. Introduction to OOP
 Object-Oriented Programming (OOP) is a programming paradigm that uses "objects" to represent data and methods. It promotes greater flexibility and maintainability in programming.
 
 ## Key Concepts:
-- Classes: Blueprints for creating objects.
-- Objects: Instances of classes.
-- Encapsulation: Restricting access to certain components.
-- Inheritance: Mechanism to create new classes based on existing ones.
-- Polymorphism: Ability to process objects differently based on their data type or class.
-- Abstraction: Hiding complex implementation details and showing only the essential features.
+- `Classes`: Blueprints for creating objects.
+- `Objects`: Instances of classes.
+- `Encapsulation`: Restricting access to certain components.
+- `Inheritance`: Mechanism to create new classes based on existing ones.
+- `Polymorphism`: Ability to process objects differently based on their data type or class.
+- `Abstraction`: Hiding complex implementation details and showing only the essential features.
 ### 2. Classes and Objects
 Example: Basic Class and Object
 ```cpp
