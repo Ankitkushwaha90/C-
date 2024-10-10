@@ -1,0 +1,242 @@
+# C++ Basics and Functions Tutorial
+
+## C++ Basics
+
+### Overview
+C++ is a powerful, high-level programming language that supports object-oriented programming, enabling developers to create complex applications.
+
+### Program Structure
+A basic C++ program consists of headers, functions, and a main function.
+
+#### Example:
+```cpp
+#include <iostream> // Include standard input-output stream
+
+// Main function - execution starts here
+int main() {
+    std::cout << "Hello, World!" << std::endl; // Print message
+    return 0; // Exit with status code 0
+}
+```
+### Namespace
+Namespaces help organize code and avoid name conflicts.
+
+Example:
+```cpp
+#include <iostream>
+
+namespace MyNamespace {
+    void greet() {
+        std::cout << "Hello from MyNamespace!" << std::endl;
+    }
+}
+
+int main() {
+    MyNamespace::greet(); // Accessing the function from the namespace
+    return 0;
+}
+```
+### Identifiers
+Identifiers are names given to variables, functions, and other user-defined items. They must start with a letter or underscore, followed by letters, digits, or underscores.
+
+Example:
+```cpp
+int myVariable = 5; // Valid identifier
+```
+### Variables
+Variables are used to store data.
+
+Example:
+```cpp
+int age = 25; // Integer variable
+double salary = 50000.50; // Double variable
+```
+### Constants
+Constants are fixed values that cannot be changed.
+
+Example:
+```cpp
+const double PI = 3.14159; // Constant variable
+```
+### Enum
+Enums are used to define a variable that can hold a set of predefined constants.
+
+Example:
+```cpp
+enum Color { RED, GREEN, BLUE };
+
+Color myColor = GREEN; // Using the enum
+```
+### Operators
+C++ supports various operators including arithmetic, relational, logical, and more.
+
+Example:
+```cpp
+int a = 10, b = 20;
+int sum = a + b; // Addition operator
+bool isEqual = (a == b); // Equality operator
+```
+### Typecasting
+Typecasting allows you to convert one data type to another.
+
+Example:
+```cpp
+double num = 9.5;
+int rounded = (int)num; // Explicit typecasting
+```
+### Control Structures
+Control structures like if, switch, loops (for, while) manage the flow of a program.
+
+Example:
+```cpp
+int x = 10;
+if (x > 5) {
+    std::cout << "x is greater than 5" << std::endl;
+}
+```
+## C++ Functions
+### Simple Functions
+Functions are blocks of code that perform a specific task.
+
+Example:
+```cpp
+void sayHello() {
+    std::cout << "Hello!" << std::endl;
+}
+
+int main() {
+    sayHello(); // Calling the function
+    return 0;
+}
+```
+### Call and Return by Reference
+You can pass variables by reference to modify the original variable.
+
+Example:
+```cpp
+void increment(int& value) {
+    value++;
+}
+
+int main() {
+    int num = 5;
+    increment(num);
+    std::cout << "Incremented value: " << num << std::endl; // Output: 6
+    return 0;
+}
+```
+### Inline Functions
+Inline functions are defined with the inline keyword to reduce function call overhead.
+
+Example:
+```cpp
+inline int square(int x) {
+    return x * x;
+}
+
+int main() {
+    std::cout << "Square of 5: " << square(5) << std::endl; // Output: 25
+    return 0;
+}
+```
+### Macro vs. Inline Functions
+Macros are preprocessor directives, while inline functions are actual functions.
+
+Example:
+```cpp
+#define SQUARE(x) ((x) * (x)) // Macro
+
+int main() {
+    std::cout << "Square of 5 using macro: " << SQUARE(5) << std::endl; // Output: 25
+    return 0;
+}
+```
+### Overloading of Functions
+Function overloading allows you to define multiple functions with the same name but different parameters.
+
+Example:
+```cpp
+void display(int num) {
+    std::cout << "Integer: " << num << std::endl;
+}
+
+void display(double num) {
+    std::cout << "Double: " << num << std::endl;
+}
+
+int main() {
+    display(5); // Calls the integer version
+    display(5.5); // Calls the double version
+    return 0;
+}
+```
+### Default Arguments
+Functions can have default values for parameters.
+
+Example:
+```cpp
+void greet(std::string name = "Guest") {
+    std::cout << "Hello, " << name << "!" << std::endl;
+}
+
+int main() {
+    greet(); // Output: Hello, Guest!
+    greet("Alice"); // Output: Hello, Alice!
+    return 0;
+}
+```
+### Friend Functions
+Friend functions can access private and protected members of a class.
+
+Example:
+```cpp
+class Box {
+private:
+    double width;
+
+public:
+    Box(double w) : width(w) {}
+
+    friend void printWidth(Box box); // Friend function declaration
+};
+
+void printWidth(Box box) {
+    std::cout << "Width: " << box.width << std::endl;
+}
+
+int main() {
+    Box box(10);
+    printWidth(box); // Output: Width: 10
+    return 0;
+}
+```
+### Virtual Functions
+Virtual functions enable polymorphism in C++.
+
+Example:
+```cpp
+
+class Base {
+public:
+    virtual void show() {
+        std::cout << "Base class show function called." << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() override { // Override the base class method
+        std::cout << "Derived class show function called." << std::endl;
+    }
+};
+
+
+int main() {
+    Base* b;          // Base class pointer
+    Derived d;       // Derived class object
+    b = &d;          // Pointing to derived class object
+    b->show();       // Calls Derived's show() due to virtual function
+    return 0;
+}
+```
+This tutorial covers the basics of C++ programming, including fundamental concepts, control structures, and functions with examples. By practicing these examples, you will build a strong foundation in C++.
