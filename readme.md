@@ -2,7 +2,7 @@ Creating a comprehensive tutorial page for C++ with Object-Oriented Programming 
 
 # C++ Object-Oriented Programming (OOP) Tutorial
 ## Table of Contents
-1. - Introduction to OOP
+- 1. Introduction to OOP
 - 2. Classes and Objects
 - 3. Encapsulation
 - 4. Inheritance
