@@ -1,0 +1,353 @@
+# C++ Tutorial: Objects and Classes, Inheritance, and Polymorphism
+
+## 1. Objects and Classes in C++
+
+### Basics of Object and Class in C++
+In C++, a class is a blueprint for creating objects. Objects are instances of classes.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    string brand;
+    string model;
+    int year;
+
+    void displayInfo() {
+        cout << "Brand: " << brand << ", Model: " << model << ", Year: " << year << endl;
+    }
+};
+
+int main() {
+    Car car1;
+    car1.brand = "Toyota";
+    car1.model = "Corolla";
+    car1.year = 2020;
+    car1.displayInfo();
+    return 0;
+}
+```
+### Private and Public Members
+- `Private members`: Can only be accessed by member functions of the class.
+- `Public members`: Can be accessed from outside the class.
+```cpp
+class Person {
+private:
+    int age;
+public:
+    void setAge(int a) {
+        age = a;
+    }
+    int getAge() {
+        return age;
+    }
+};
+```
+### Static Data and Function Members
+Static members are shared among all objects of the class.
+
+```cpp
+class Counter {
+public:
+    static int count;
+    Counter() {
+        count++;
+    }
+};
+int Counter::count = 0;  // Initialize static member
+
+int main() {
+    Counter obj1, obj2;
+    cout << "Count: " << Counter::count << endl;  // Outputs 2
+    return 0;
+}
+```
+### Constructors and Their Types
+Constructors are special member functions that are called when an object is created.
+
+```cpp
+class Box {
+public:
+    int length, width;
+
+    // Default constructor
+    Box() : length(0), width(0) {}
+
+    // Parameterized constructor
+    Box(int l, int w) : length(l), width(w) {}
+};
+```
+### Destructors
+Destructors are used to free resources when an object goes out of scope.
+
+```cpp
+class Box {
+public:
+    ~Box() {
+        cout << "Destructor called!" << endl;
+    }
+};
+```
+### Operator Overloading
+You can redefine the behavior of operators.
+
+```cpp
+class Complex {
+public:
+    int real, imag;
+
+    Complex operator+(Complex const& obj) {
+        Complex result;
+        result.real = real + obj.real;
+        result.imag = imag + obj.imag;
+        return result;
+    }
+};
+```
+### Type Conversion
+Converting between different types, either user-defined or built-in.
+
+```cpp
+class Distance {
+public:
+    int meters;
+    Distance(int m) : meters(m) {}
+
+    // Conversion operator to int
+    operator int() {
+        return meters;
+    }
+};
+```
+## 2. Inheritance in C++
+### Concept of Inheritance
+Inheritance allows a class to inherit properties and methods from another class.
+
+```cpp
+class Animal {
+public:
+    void sound() {
+        cout << "Some sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        cout << "Woof!" << endl;
+    }
+};
+```
+### Types of Inheritance
+Single Inheritance
+```cpp
+class Base {
+public:
+    void display() {
+        cout << "Base class" << endl;
+    }
+};
+
+class Derived : public Base {};
+```
+### Multiple Inheritance
+```cpp
+class Base1 {
+public:
+    void display() {
+        cout << "Base1 class" << endl;
+    }
+};
+
+class Base2 {
+public:
+    void display() {
+        cout << "Base2 class" << endl;
+    }
+};
+
+class Derived : public Base1, public Base2 {};
+```
+### Multilevel Inheritance
+```cpp
+class A {
+public:
+    void show() {
+        cout << "Class A" << endl;
+    }
+};
+class B : public A {};
+class C : public B {};
+```
+### Hierarchical Inheritance
+```cpp
+class A {
+public:
+    void show() {
+        cout << "Class A" << endl;
+    }
+};
+
+class B : public A {};
+class C : public A {};
+```
+### Hybrid Inheritance
+```cpp
+class A {};
+class B : public A {};
+class C : public A {};
+class D : public B, public C {};  // Hybrid inheritance
+```
+### Protected Members
+Protected members are accessible in derived classes but not from outside.
+
+```cpp
+class Base {
+protected:
+    int x;
+public:
+    void setX(int val) {
+        x = val;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() {
+        cout << "X: " << x << endl;
+    }
+};
+```
+### Overriding
+Derived classes can override methods from the base class.
+
+```cpp
+class Base {
+public:
+    void display() {
+        cout << "Base display" << endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() override {
+        cout << "Derived display" << endl;
+    }
+};
+```
+### Virtual Base Class
+Avoids ambiguity in diamond inheritance.
+
+```cpp
+class A {
+public:
+    void display() {
+        cout << "Class A" << endl;
+    }
+};
+
+class B : virtual public A {};
+class C : virtual public A {};
+class D : public B, public C {};
+```
+### 3. Polymorphism in C++
+Pointers in C++
+Pointers allow for the storage and manipulation of memory addresses.
+
+```cpp
+int main() {
+    int a = 10;
+    int* p = &a;
+    cout << *p;  // Outputs 10
+    return 0;
+}
+```
+### Pointers and Objects
+Objects can also be pointed to using pointers.
+
+```cpp
+class Rectangle {
+public:
+    int length, width;
+
+    Rectangle(int l, int w) : length(l), width(w) {}
+    int area() {
+        return length * width;
+    }
+};
+
+int main() {
+    Rectangle* rect = new Rectangle(10, 5);
+    cout << "Area: " << rect->area() << endl;
+    delete rect;
+    return 0;
+}
+```
+### This Pointer
+The this pointer refers to the current object instance.
+
+```cpp
+class Person {
+public:
+    Person* getThis() {
+        return this;
+    }
+};
+```
+### Virtual Functions and Pure Virtual Functions
+Virtual functions support dynamic (run-time) polymorphism.
+
+```cpp
+
+class Base {
+public:
+    virtual void show() {
+        cout << "Base class" << endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() override {
+        cout << "Derived class" << endl;
+    }
+};
+```
+### Pure virtual functions enforce that derived classes must implement the function.
+
+```cpp
+Copy code
+class Abstract {
+public:
+    virtual void show() = 0;  // Pure virtual function
+};
+```
+### Implementing Polymorphism
+Polymorphism allows one interface to be used for a general class of actions.
+
+```cpp
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing Shape" << endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing Circle" << endl;
+    }
+};
+
+int main() {
+    Shape* shape = new Circle();
+    shape->draw();  // Outputs "Drawing Circle"
+    delete shape;
+    return 0;
+}
+```
+This page covers the basics of Objects and Classes, Inheritance, and Polymorphism in C++, with examples to help you learn. Experiment with the code snippets for hands-on practice!
