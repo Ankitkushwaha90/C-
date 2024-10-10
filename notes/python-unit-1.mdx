@@ -2,7 +2,7 @@ Introduction to Object Orientation
 Object Orientation (OO) is a programming paradigm that uses "objects" to represent data and methods to manipulate that data. It aims to model real-world entities and their interactions, promoting better organization and modularity in code.
 
 ## Key Concepts
-- 1.Object Identity
+## 1.Object Identity
 
 Every object has a unique identity, even if its state is identical to another object.
 Example:
@@ -16,7 +16,7 @@ car2 = Car("Toyota")
 
 print(car1 is car2)  # Output: False (different identities)
 ```
-2. Encapsulation
+## 2. Encapsulation
 
 Encapsulation is the bundling of data and methods that operate on the data within a single unit or class.
 It restricts direct access to some of an object's components, promoting a modular design.
@@ -36,7 +36,7 @@ account = BankAccount()
 account.deposit(100)
 print(account.get_balance())  # Output: 100
 ```
-- 3. Information Hiding
+## 3. Information Hiding
 
 Information hiding refers to the practice of restricting access to certain details of an object, exposing only what is necessary.
 It helps reduce complexity and increase security.
@@ -50,7 +50,7 @@ class User:
     def check_password(self, password):
         return self.__password == password
 ```
-- 4.Polymorphism
+## 4. Polymorphism
 
 Polymorphism allows objects of different classes to be treated as objects of a common superclass. It promotes flexibility in code.
 Example:
@@ -73,7 +73,7 @@ def make_sound(animal):
 make_sound(Dog())  # Output: Bark
 make_sound(Cat())  # Output: Meow
 ```
-- 5. Generosity
+## 5. Generosity
 
 Generosity in OO can refer to the concept of "interface segregation," where classes provide minimal but complete interfaces to maximize flexibility and usability.
 ## Importance of Modeling
